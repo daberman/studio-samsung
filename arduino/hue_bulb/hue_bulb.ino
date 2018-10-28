@@ -102,7 +102,6 @@ void loop() {
         red = Serial.parseInt();
         green = Serial.parseInt();
         blue = Serial.parseInt();
-        brightness = Serial.parseInt();
 
         setColor();
 
