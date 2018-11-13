@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mScanBtn;
     private Button mOffBtn;
     private Button mListPairedDevicesBtn;
-    private Button mDiscoverBtn;
+   // private Button mDiscoverBtn;
     private BluetoothAdapter mBTAdapter;
     private Set<BluetoothDevice> mPairedDevices;
     private ArrayAdapter<String> mBTArrayAdapter;
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         // mReadBuffer = (TextView) findViewById(R.id.readBuffer);
         mScanBtn = (Button)findViewById(R.id.scan);
         mOffBtn = (Button)findViewById(R.id.off);
-        mDiscoverBtn = (Button)findViewById(R.id.discover);
+       // mDiscoverBtn = (Button)findViewById(R.id.discover);
         mListPairedDevicesBtn = (Button)findViewById(R.id.PairedBtn);
         mLED1 = (CheckBox)findViewById(R.id.checkboxLED1);
         mPurple = (CheckBox)findViewById(R.id.checkboxPurple);
@@ -204,12 +204,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            mDiscoverBtn.setOnClickListener(new View.OnClickListener(){
+          /*  mDiscoverBtn.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
                     discover(v);
                 }
-            });
+            }); */
         }
     }
 
@@ -248,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),"Bluetooth turned Off", Toast.LENGTH_SHORT).show();
     }
 
-    private void discover(View view){
+   /* private void discover(View view){
         // Check if the device is already discovering
         if(mBTAdapter.isDiscovering()){
             mBTAdapter.cancelDiscovery();
@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Bluetooth not on", Toast.LENGTH_SHORT).show();
             }
         }
-    }
+    } */
 
     final BroadcastReceiver blReceiver = new BroadcastReceiver() {
         @Override
