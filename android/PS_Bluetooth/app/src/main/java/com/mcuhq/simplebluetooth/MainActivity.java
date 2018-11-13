@@ -1,4 +1,4 @@
-package com.mcuhq.simplebluetooth;
+package com.mcuhq.samsungbluetooth;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
