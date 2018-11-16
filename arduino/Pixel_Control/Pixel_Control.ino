@@ -9,8 +9,10 @@
 
 #include <Adafruit_NeoPixel.h>
 
-#define PIN 6
-#define PIXELS 5
+#define STRIP_PIN 6
+#define STRIP_PIXELS 4
+#define STARTUP_PIN 4
+#define STARTUP_PIXELS 3
 
 // Parameter 1 = number of pixels in strip
 // Parameter 2 = Arduino pin number (most are valid)
@@ -20,14 +22,22 @@
 //   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)
 //   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
 //   NEO_RGBW    Pixels are wired for RGBW bitstream (NeoPixel RGBW products)
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(PIXELS, PIN, NEO_GRB + NEO_KHZ800);
-
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(STRIP_PIXELS, STRIP_PIN, NEO_GRB + NEO_KHZ800);
 int brightness;
 int red;
 int green;
 int blue;
 
+// Single LED to indicate startup status. Only used during setup()
+Adafruit_NeoPixel startup = Adafruit_NeoPixel(STARTUP_PIXELS, STARTUP_PIN, NEO_GRB + NEO_KHZ800);  
+
 void setup() {
+
+  startup.begin();
+  startup.show();
+
+  startup.setPixelColor(0, 255, 0, 0);
+  startup.show();
 
   red = 0;
   green = 0;
@@ -37,18 +47,40 @@ void setup() {
   strip.begin();
   strip.show();
 
+  startup.setPixelColor(1, 255, 0, 0);
+  startup.show();
+
   Serial.begin(9600);
   while (!Serial);
 
-  red = 255;
-  flashColor(10, 100);
-  red = 0;
-  green = 255;
-  flashColor(3, 500);
+    // Wait to receive from bluetooth indicating connected, blink red to indicate waiting
+  bool toggledOn = false;
 
-  brightness = 0;
-  green = 0;
-  setColor();
+  while (true) {
+    if (Serial.available() > 0)
+    {
+      Serial.read(); // Clear buffer
+      break;
+    }
+
+    if (toggledOn)
+    {
+      startup.setPixelColor(2, 0, 0, 0); // Turn LED off
+    } else
+    {
+      startup.setPixelColor(2, 255, 0, 0); // Turn LED red
+    }
+
+    toggledOn = !toggledOn;
+    delay(250);
+
+  }
+
+  for (int i = 0; i < STARTUP_PIXELS; i++)
+  {
+    startup.setPixelColor(i, 0, 255, 0);
+  }
+  startup.show();
 
 }
 
