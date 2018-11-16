@@ -4,12 +4,17 @@
 // Simple code to control the NeoPixel RGB LED strip
 // Uses Serial @ 9600 baud
 // Receives 4 values - RGB (0-255) + brightness (0-100), with each value separated by a non-numeric character,
-// preceded by 'c'.[
+// preceded by 'c'.
 // Sending 'r' will toggle on rainbow mode
 
 #include <Adafruit_NeoPixel.h>
+//#include <SoftwareSerial.h>
 
-#define STRIP_PIN 6
+//SoftwareSerial BTserial(2,3); // RX | TX
+// Connect the HC-06 TX to the Arduino RX on pin 5. 
+// Connect the HC-06 RX to the Arduino TX on pin 6 through a voltage divider.
+
+#define STRIP_PIN 7
 #define STRIP_PIXELS 4
 #define STARTUP_PIN 4
 #define STARTUP_PIXELS 3
@@ -46,6 +51,7 @@ void setup() {
 
   strip.begin();
   strip.show();
+  setColor();
 
   startup.setPixelColor(1, 255, 0, 0);
   startup.show();
@@ -70,7 +76,8 @@ void setup() {
     {
       startup.setPixelColor(2, 255, 0, 0); // Turn LED red
     }
-
+    startup.show();
+    
     toggledOn = !toggledOn;
     delay(250);
 
@@ -164,16 +171,20 @@ void rainbowScroll(uint8_t wait) {
       }
 
       strip.show();
-      delay(wait);
-    }
 
-    if (Serial.available() > 0)
-    {
-      char cmd = Serial.read();
-      if (cmd == 'r')
+      
+      if (Serial.available() > 0)
       {
-        on = false;
+        char cmd = Serial.read();
+        if (cmd == 'r')
+        {
+          on = false;
+          setColor();
+          return;
+        }
       }
+
+      delay(wait);
     }
 
   }
