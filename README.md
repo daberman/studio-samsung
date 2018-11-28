@@ -6,5 +6,5 @@ During Product Studio, we built a smart table to enhance the customer buying exp
 
 Included in this repo is the arduino code that runs the microcontroller cube, and the android code that runs the android app.
 
-[Arduino code](/arduino)
-[Android code](/android)
+* [Arduino code](/arduino)
+* [Android code](/android)
