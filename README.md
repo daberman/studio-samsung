@@ -1,7 +1,10 @@
-# Setup
+# PC075 - Samsung - Smart Table
 
-This repository contains submodule(s). After cloning the repository run the following git commands:
+During Product Studio, we built a smart table to enhance the customer buying experience in the smart home aisle of retailers such as Best Buy, Home Depot, and Samsung.
 
-git submodule init
+![Image](https://github.com/daberman/studio-samsung/blob/master/SmartTable.png)
 
-git submodule update
+Included in this repo is the arduino code that runs the microcontroller cube, and the android code that runs the android app.
+
+* [Arduino code](/arduino)
+* [Android code](/android)
