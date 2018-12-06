@@ -33,7 +33,7 @@ int red;
 int green;
 int blue;
 
-// Single LED to indicate startup status. Only used during setup()
+// 3 LEDs to indicate startup status. Only used during setup()
 Adafruit_NeoPixel startup = Adafruit_NeoPixel(STARTUP_PIXELS, STARTUP_PIN, NEO_GRB + NEO_KHZ800);  
 
 void setup() {
@@ -59,7 +59,7 @@ void setup() {
   Serial.begin(9600);
   while (!Serial);
 
-    // Wait to receive from bluetooth indicating connected, blink red to indicate waiting
+  // Wait to receive from bluetooth indicating connected, blink red to indicate waiting
   bool toggledOn = false;
 
   while (true) {

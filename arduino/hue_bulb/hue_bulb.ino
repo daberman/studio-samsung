@@ -42,34 +42,8 @@ void setup() {
   strip.begin();
   strip.show();
 
-  startup.begin();
-  startup.show();
-
   Serial.begin(9600);
   while (!Serial);
-
-  // Wait to receive from bluetooth indicating connected, blink red to indicate waiting
-  bool toggledOn = false;
-
-  while (true) {
-    if (Serial.available() > 0)
-    {
-      Serial.read(); // Clear buffer
-      break;
-    }
-
-    if (toggledOn)
-    {
-      startup.setPixelColor(0, 0, 0, 0); // Turn LED off
-    } else
-    {
-      startup.setPixelColor(0, 255, 0, 0); // Turn LED red
-    }
-
-    toggledOn = !toggledOn;
-    delay(250);
-
-  }
 
   // Bluetooth connected, flash green 3x, then solid green to indicate connected
   for (int i = 0; i < 3; i++)
@@ -90,7 +64,7 @@ void loop() {
 
     switch (cmd) {
 
-      case 'b':
+      case 'b': // Update brightness
         brightness = Serial.parseInt();
 
         setColor();
@@ -98,7 +72,7 @@ void loop() {
         Serial.read(); // Clear the buffer
         break;
 
-      case 'c':
+      case 'c': // Update color
         red = Serial.parseInt();
         green = Serial.parseInt();
         blue = Serial.parseInt();
@@ -108,12 +82,12 @@ void loop() {
         Serial.read(); // Clear the buffer
         break;
 
-      case 'o':
+      case 'o': // Toggle On/Off
         on = !on;
         setColor();
         break;
 
-      case 'r':
+      case 'r': // Turn on Rainbow mode (send 'r' to turn off)
         rainbowScroll(5);
         break;
 
@@ -181,7 +155,7 @@ void rainbowScroll(uint8_t wait) {
       if (Serial.available() > 0)
       {
         char cmd = Serial.read();
-        if (cmd == 'r')
+        if (cmd == 'r') // Receive an 'r' to turn off Rainbow mode
         {
           rainbow = false;
           break;
