@@ -106,7 +106,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: Actions
     
     @IBAction func refreshBTPressed(_ sender: Any) {
-        availableBT = []
+        availableBT = [] // Clear list
         startScan()
     }
     
