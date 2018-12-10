@@ -72,7 +72,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
+    // Connect to the peripheral the user selects
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let peripheral = availableBT[indexPath.row]
+        print("Attempting a connection")
+        btStatusLabel.text = "Connecting to \(String(describing: peripheral.name))"
+        btManager.connect(peripheral, options: nil)
+    }
+    
     // MARK: CBCentralManagerDelegate
+    
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         // nothing to do here since scanning is controlled by button action
     }
@@ -94,13 +103,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if newPeripheral {
                 self.availableBT.append(peripheral)
                 self.btTableView.reloadData()
+                print("**********************************")
                 print("Found new pheripheral devices with services")
                 print("Peripheral name: \(String(describing: peripheral.name))")
-                print("**********************************")
                 print("Advertisement Data : \(advertisementData)")
-                print("UUID: \(peripheral.identifier)\n")
+                print("UUID: \(peripheral.identifier)")
+                print("**********************************\n")
             }
         }
+    }
+    
+    // Called when successfully connected to a peripheral
+    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        print("Connection Successful\n")
+        btStatusLabel.text = "Successfully connected to \(String(describing: peripheral.name))"
+    }
+    
+    // Called when a connection attempt fails
+    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+        print("Connection failed\n")
+        if let error = error {
+            print(error.localizedDescription)
+        }
+        btStatusLabel.text = "Connection attempt to \(String(describing: peripheral.name)) failed"
     }
 
     // MARK: Actions
@@ -116,7 +141,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // MARK: Private functions
     
     private func startScan() {
-        print("Now Scanning...")
+        print("Now Scanning...\n")
         btStatusLabel.text = "Scanning"
         self.timer.invalidate()
         btManager?.scanForPeripherals(withServices: nil, options: [CBCentralManagerScanOptionAllowDuplicatesKey : false])
@@ -127,7 +152,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @objc private func cancelScan() {
         self.btManager?.stopScan()
         self.timer.invalidate()
-        print("Scan Stopped")
+        print("Scan Stopped\n")
         btStatusLabel.text = "Scan stopped"
     }
     
