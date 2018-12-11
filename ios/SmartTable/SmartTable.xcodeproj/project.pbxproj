@@ -13,6 +13,7 @@
 		377BD4E721BAE3BC00CEBC12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 377BD4E621BAE3BC00CEBC12 /* Assets.xcassets */; };
 		377BD4EA21BAE3BC00CEBC12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 377BD4E821BAE3BC00CEBC12 /* LaunchScreen.storyboard */; };
 		377BD4F221BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD4F121BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift */; };
+		377BD4F621BF5A9B00CEBC12 /* UUIDKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD4F521BF5A9B00CEBC12 /* UUIDKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		377BD4E921BAE3BC00CEBC12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		377BD4EB21BAE3BC00CEBC12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		377BD4F121BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPeripheralTableViewCell.swift; sourceTree = "<group>"; };
+		377BD4F521BF5A9B00CEBC12 /* UUIDKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUIDKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				377BD4E121BAE3BA00CEBC12 /* ViewController.swift */,
 				377BD4F121BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift */,
 				377BD4E321BAE3BA00CEBC12 /* Main.storyboard */,
+				377BD4F521BF5A9B00CEBC12 /* UUIDKey.swift */,
 				377BD4E621BAE3BC00CEBC12 /* Assets.xcassets */,
 				377BD4E821BAE3BC00CEBC12 /* LaunchScreen.storyboard */,
 				377BD4EB21BAE3BC00CEBC12 /* Info.plist */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				377BD4F621BF5A9B00CEBC12 /* UUIDKey.swift in Sources */,
 				377BD4E221BAE3BA00CEBC12 /* ViewController.swift in Sources */,
 				377BD4F221BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift in Sources */,
 				377BD4E021BAE3BA00CEBC12 /* AppDelegate.swift in Sources */,

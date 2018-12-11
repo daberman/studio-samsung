@@ -144,7 +144,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         print("Now Scanning...\n")
         btStatusLabel.text = "Scanning"
         self.timer.invalidate()
-        btManager?.scanForPeripherals(withServices: nil, options: [CBCentralManagerScanOptionAllowDuplicatesKey : false])
+        btManager?.scanForPeripherals(withServices: [BLEService_UUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey : false])
         Timer.scheduledTimer(timeInterval: SCAN_TIMEOUT, target: self, selector: #selector(self.cancelScan),
                              userInfo: nil, repeats: false)
     }
