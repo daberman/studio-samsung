@@ -9,7 +9,8 @@
 import UIKit
 import CoreBluetooth
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CBCentralManagerDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CBCentralManagerDelegate,
+CBPeripheralDelegate {
     
     // MARK: Properties
     
@@ -20,10 +21,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     let SCAN_TIMEOUT = 5.0
     
+    var btManager : CBCentralManager!
     var availableBT = [CBPeripheral]()
     var timer = Timer()
-    
-    var btManager : CBCentralManager!
+    var txCharacteristic : CBCharacteristic!
+    var hueBulb : (CBPeripheral, CBCharacteristic)!
     
     // MARK: ViewController
     override func viewDidLoad() {
@@ -120,9 +122,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Called when successfully connected to a peripheral
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print("Connection Successful\n")
-        print("\(String(describing: peripheral))")
+        print("Connection Successful:")
+        print("\(String(describing: peripheral))\n")
         btStatusLabel.text = "Successfully connected to \(String(describing: peripheral.name))"
+        
+        peripheral.delegate = self
+        peripheral.discoverServices([BLEService_UUID])
     }
     
     // Called when a connection attempt fails
@@ -133,6 +138,58 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         btStatusLabel.text = "Connection attempt to \(String(describing: peripheral.name)) failed"
     }
+    
+    // MARK: CBPeripheralDelegate
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        if error != nil {
+            print("\(String(describing: error))")
+        }
+        
+        guard let services = peripheral.services else {
+            return
+        }
+        
+        for service in services {
+            peripheral.discoverCharacteristics(nil, for: service)
+        }
+        
+        print("Discovered services: \(services)")
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        
+        print("")
+        
+        if error != nil {
+            print("\(String(describing: error))")
+        }
+        
+        guard let characteristics = service.characteristics else {
+            return
+        }
+        
+        for characteristic in characteristics {
+            if characteristic.uuid.isEqual(BLE_Characteristic_uuid_Rx)  {
+//                rxCharacteristic = characteristic
+//
+//                //Once found, subscribe to the this particular characteristic...
+//                peripheral.setNotifyValue(true, for: rxCharacteristic!)
+//                // We can return after calling CBPeripheral.setNotifyValue because CBPeripheralDelegate's
+//                // didUpdateNotificationStateForCharacteristic method will be called automatically
+//                peripheral.readValue(for: characteristic)
+                print("Rx Characteristic: \(characteristic.uuid)")
+            }
+            if characteristic.uuid.isEqual(BLE_Characteristic_uuid_Tx){
+                txCharacteristic = characteristic
+                print("Tx Characteristic: \(characteristic.uuid)")
+                hueBulb = (peripheral, characteristic)
+            }
+            //peripheral.discoverDescriptors(for: characteristic)
+            
+        }
+        
+        
+    }
 
     // MARK: Actions
     
@@ -142,6 +199,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func bulbPowerToggled(_ sender: Any) {
+        let (peripheral, characteristic) = hueBulb
+        var cmd : NSString?
+        if bulbPowerSwitch.isOn {
+            cmd = "on"
+        } else {
+            cmd = "off"
+        }
+        let data = cmd!.data(using: String.Encoding.utf8.rawValue)
+        peripheral.writeValue(data!, for: characteristic, type: CBCharacteristicWriteType.withoutResponse)
     }
     
     // MARK: Private functions
@@ -158,7 +224,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @objc private func cancelScan() {
         self.btManager?.stopScan()
         self.timer.invalidate()
-        print("Scan Stopped\n")
+        print("\nScan Stopped\n")
         btStatusLabel.text = "Scan stopped"
     }
     
