@@ -109,6 +109,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 print("Advertisement Data : \(advertisementData)")
                 print("UUID: \(peripheral.identifier)")
                 print("**********************************\n")
+                
+                // Auto connect to Hue?
+                if peripheral.identifier.uuidString == BLE_Hue_UUID.uuidString {
+                    central.connect(peripheral, options: nil)
+                }
             }
         }
     }
@@ -116,6 +121,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // Called when successfully connected to a peripheral
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Connection Successful\n")
+        print("\(String(describing: peripheral))")
         btStatusLabel.text = "Successfully connected to \(String(describing: peripheral.name))"
     }
     

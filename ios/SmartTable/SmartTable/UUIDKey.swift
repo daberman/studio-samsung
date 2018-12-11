@@ -18,3 +18,6 @@ let MaxCharacters = 20
 let BLEService_UUID = CBUUID(string: kBLEService_UUID)
 let BLE_Characteristic_uuid_Tx = CBUUID(string: kBLE_Characteristic_uuid_Tx)//(Property = Write without response)
 let BLE_Characteristic_uuid_Rx = CBUUID(string: kBLE_Characteristic_uuid_Rx)// (Property = Read/Notify)
+
+let kAdafruitFeather_Hue_UUID = "FBC6F9D3-B50E-01A4-C33B-F2449A145D55"
+let BLE_Hue_UUID = CBUUID(string: kAdafruitFeather_Hue_UUID)
