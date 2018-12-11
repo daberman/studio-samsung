@@ -36,14 +36,16 @@
 /* Constants */
 
 // DEBUG to enable Serial prints over USB @ 115200 baud
-#define DEBUG 1 // Enable debug prints
+#define DEBUG 0 // Enable debug prints
 
 
 // Constants for the RGB status LED
 #define STATUS_LED_EN     true
-#define STATUS_R_LED_PIN  A3 // 5
+#define STATUS_R_LED_PIN  A5 // 5
 #define STATUS_G_LED_PIN  A4 // 28
-#define STATUS_B_LED_PIN  A5 // 29
+#define STATUS_B_LED_PIN  A3 // 29
+#define LED_ON            LOW
+#define LED_OFF           HIGH
 
 // Constants for the NeoPixels
 #define BULB_PIN    27
@@ -95,16 +97,16 @@ void setup()
     pinMode(STATUS_R_LED_PIN, OUTPUT);
     pinMode(STATUS_G_LED_PIN, OUTPUT);
     pinMode(STATUS_B_LED_PIN, OUTPUT);
-    digitalWrite(STATUS_R_LED_PIN, LOW);
-    digitalWrite(STATUS_G_LED_PIN, LOW);
-    digitalWrite(STATUS_B_LED_PIN, LOW);
+    digitalWrite(STATUS_R_LED_PIN, LED_OFF);
+    digitalWrite(STATUS_G_LED_PIN, LED_OFF);
+    digitalWrite(STATUS_B_LED_PIN, LED_OFF);
   }
 
   if ( DEBUG > 1 ) delay(1000);
 
   // Setup NeoPixels for the bulb
   if ( DEBUG ) Serial.println("Initializing NeoPixels...");
-  if ( STATUS_LED_EN ) digitalWrite(STATUS_R_LED_PIN, HIGH); // Turn on red
+  if ( STATUS_LED_EN ) digitalWrite(STATUS_R_LED_PIN, LED_ON); // Turn on red
 
   red = 255;
   green = 255;
@@ -121,7 +123,8 @@ void setup()
 
   // Init Bluefruit
   if ( DEBUG ) Serial.println("Initializing Bluetooth...");
-  if ( STATUS_LED_EN ) digitalWrite(STATUS_B_LED_PIN, HIGH); // Add blue to make purple!
+  if ( STATUS_LED_EN ) digitalWrite(STATUS_B_LED_PIN, LED_ON); // Add blue to make purple!
+  if ( DEBUG > 2 ) delay(1000);
 
   Bluefruit.begin();
   // Set max power. Accepted values are: -40, -30, -20, -16, -12, -8, -4, 0, 4
@@ -136,7 +139,7 @@ void setup()
   startAdv(); // Set up and start advertising
 
   if ( DEBUG ) Serial.println("Bluetooth Initialization complete");
-  if ( STATUS_LED_EN ) digitalWrite(STATUS_R_LED_PIN, LOW); // Turn off red
+  if ( STATUS_LED_EN ) digitalWrite(STATUS_R_LED_PIN, LED_OFF); // Turn off red
 }
 
 /* Main loop */
@@ -248,9 +251,9 @@ void connect_callback(uint16_t conn_handle)
   }
   if ( STATUS_LED_EN )
   {
-    digitalWrite(STATUS_R_LED_PIN, LOW);
-    digitalWrite(STATUS_G_LED_PIN, HIGH);
-    digitalWrite(STATUS_B_LED_PIN, LOW);
+    digitalWrite(STATUS_R_LED_PIN, LED_OFF);
+    digitalWrite(STATUS_G_LED_PIN, LED_ON);
+    digitalWrite(STATUS_B_LED_PIN, LED_OFF);
   }
 }
 
@@ -259,9 +262,9 @@ void disconnect_callback(uint16_t conn_handle, uint8_t reason)
   if ( DEBUG ) Serial.println("Bluetooth disconnected");
   if ( STATUS_LED_EN )
   {
-    digitalWrite(STATUS_R_LED_PIN, LOW);
-    digitalWrite(STATUS_G_LED_PIN, LOW);
-    digitalWrite(STATUS_B_LED_PIN, HIGH);
+    digitalWrite(STATUS_R_LED_PIN, LED_OFF);
+    digitalWrite(STATUS_G_LED_PIN, LED_OFF);
+    digitalWrite(STATUS_B_LED_PIN, LED_ON);
   }
 }
 

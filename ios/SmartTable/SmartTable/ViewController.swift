@@ -194,11 +194,17 @@ CBPeripheralDelegate, HSBColorPickerDelegate {
     // MARK: HSBColorPickerDelegate
     
     func HSBColorColorPickerTouched(sender: HSBColorPicker, color: UIColor, point: CGPoint, state: UIGestureRecognizer.State) {
-        var red : CGFloat = 0
-        var green : CGFloat = 0
-        var blue : CGFloat = 0
-        color.getRed(&red, green: &green, blue: &blue, alpha: nil)
-        print("RGB: \(red) \(green) \(blue)")
+        var fRed : CGFloat = 0
+        var fGreen : CGFloat = 0
+        var fBlue : CGFloat = 0
+        color.getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: nil)
+        print("RGB: \(fRed) \(fGreen) \(fBlue)")
+        let iRed = NSInteger(fRed * 255)
+        let iGreen = NSInteger(fGreen * 255)
+        let iBlue = NSInteger(fBlue * 255)
+        print("\(iRed) \(iGreen) \(iBlue)")
+        
+        bulbWrite("c\(iRed)\n\(iGreen)\n\(iBlue)" as NSString)
     }
 
     // MARK: Actions
@@ -209,18 +215,20 @@ CBPeripheralDelegate, HSBColorPickerDelegate {
     }
     
     @IBAction func bulbPowerToggled(_ sender: Any) {
-        let (peripheral, characteristic) = hueBulb
-        var cmd : NSString?
         if bulbPowerSwitch.isOn {
-            cmd = "on"
+            bulbWrite("on")
         } else {
-            cmd = "off"
+            bulbWrite("off")
         }
-        let data = cmd!.data(using: String.Encoding.utf8.rawValue)
-        peripheral.writeValue(data!, for: characteristic, type: CBCharacteristicWriteType.withoutResponse)
     }
     
     // MARK: Private functions
+    
+    private func bulbWrite(_ msg : NSString) {
+        guard let (peripheral, characteristic) = hueBulb else {return}
+        let data = msg.data(using: String.Encoding.utf8.rawValue)
+        peripheral.writeValue(data!, for: characteristic, type: CBCharacteristicWriteType.withoutResponse)
+    }
     
     private func startScan() {
         print("Now Scanning...\n")
