@@ -10,7 +10,7 @@ import UIKit
 import CoreBluetooth
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CBCentralManagerDelegate,
-CBPeripheralDelegate {
+CBPeripheralDelegate, HSBColorPickerDelegate {
     
     // MARK: Properties
     
@@ -18,6 +18,7 @@ CBPeripheralDelegate {
     @IBOutlet weak var btStatusLabel: UILabel!
     @IBOutlet weak var refreshBTButton: UIButton!
     @IBOutlet weak var bulbPowerSwitch: UISwitch!
+    @IBOutlet weak var bulbColorPicker: HSBColorPicker!
     
     let SCAN_TIMEOUT = 5.0
     
@@ -35,6 +36,7 @@ CBPeripheralDelegate {
         btTableView.dataSource = self
         
         bulbPowerSwitch.isOn = false
+        bulbColorPicker.delegate = self
         
         btStatusLabel.text = "Please refresh list"
         
@@ -140,6 +142,7 @@ CBPeripheralDelegate {
     }
     
     // MARK: CBPeripheralDelegate
+    
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if error != nil {
             print("\(String(describing: error))")
@@ -185,10 +188,17 @@ CBPeripheralDelegate {
                 hueBulb = (peripheral, characteristic)
             }
             //peripheral.discoverDescriptors(for: characteristic)
-            
         }
-        
-        
+    }
+    
+    // MARK: HSBColorPickerDelegate
+    
+    func HSBColorColorPickerTouched(sender: HSBColorPicker, color: UIColor, point: CGPoint, state: UIGestureRecognizer.State) {
+        var red : CGFloat = 0
+        var green : CGFloat = 0
+        var blue : CGFloat = 0
+        color.getRed(&red, green: &green, blue: &blue, alpha: nil)
+        print("RGB: \(red) \(green) \(blue)")
     }
 
     // MARK: Actions

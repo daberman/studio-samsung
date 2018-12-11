@@ -14,6 +14,8 @@
 		377BD4EA21BAE3BC00CEBC12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 377BD4E821BAE3BC00CEBC12 /* LaunchScreen.storyboard */; };
 		377BD4F221BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD4F121BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift */; };
 		377BD4F621BF5A9B00CEBC12 /* UUIDKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD4F521BF5A9B00CEBC12 /* UUIDKey.swift */; };
+		377BD4F821C0389F00CEBC12 /* HSBColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD4F721C0389F00CEBC12 /* HSBColorPicker.swift */; };
+		377BD4FA21C03BF500CEBC12 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD4F921C03BF500CEBC12 /* ColorPickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		377BD4EB21BAE3BC00CEBC12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		377BD4F121BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPeripheralTableViewCell.swift; sourceTree = "<group>"; };
 		377BD4F521BF5A9B00CEBC12 /* UUIDKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUIDKey.swift; sourceTree = "<group>"; };
+		377BD4F721C0389F00CEBC12 /* HSBColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBColorPicker.swift; sourceTree = "<group>"; };
+		377BD4F921C03BF500CEBC12 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 			children = (
 				377BD4DF21BAE3BA00CEBC12 /* AppDelegate.swift */,
 				377BD4E121BAE3BA00CEBC12 /* ViewController.swift */,
+				377BD4F721C0389F00CEBC12 /* HSBColorPicker.swift */,
+				377BD4F921C03BF500CEBC12 /* ColorPickerView.swift */,
 				377BD4F121BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift */,
 				377BD4E321BAE3BA00CEBC12 /* Main.storyboard */,
 				377BD4F521BF5A9B00CEBC12 /* UUIDKey.swift */,
@@ -143,7 +149,9 @@
 			files = (
 				377BD4F621BF5A9B00CEBC12 /* UUIDKey.swift in Sources */,
 				377BD4E221BAE3BA00CEBC12 /* ViewController.swift in Sources */,
+				377BD4FA21C03BF500CEBC12 /* ColorPickerView.swift in Sources */,
 				377BD4F221BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift in Sources */,
+				377BD4F821C0389F00CEBC12 /* HSBColorPicker.swift in Sources */,
 				377BD4E021BAE3BA00CEBC12 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
