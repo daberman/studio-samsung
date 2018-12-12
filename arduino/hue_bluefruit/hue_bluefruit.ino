@@ -170,9 +170,9 @@ void processCmd(Stream *s)
 
     case 'c': // Update color
       if (DEBUG > 2) Serial.println("Updating color");
-      red = s->parseInt();
-      green = s->parseInt();
-      blue = s->parseInt();
+      red = s->read();
+      green = s->read();
+      blue = s->read();
 
       setColor();
 

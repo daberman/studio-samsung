@@ -199,12 +199,13 @@ CBPeripheralDelegate, HSBColorPickerDelegate {
         var fBlue : CGFloat = 0
         color.getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: nil)
         print("RGB: \(fRed) \(fGreen) \(fBlue)")
-        let iRed = NSInteger(fRed * 255)
-        let iGreen = NSInteger(fGreen * 255)
-        let iBlue = NSInteger(fBlue * 255)
-        print("\(iRed) \(iGreen) \(iBlue)")
         
-        bulbWrite("c\(iRed)\n\(iGreen)\n\(iBlue)" as NSString)
+        let uintColors = [UInt8(fRed * 255), UInt8(fGreen * 255), UInt8(fBlue * 255)]
+        
+        var msg = Data("c".utf8)
+        msg.append(uintColors, count: 3)
+        
+        bulbWrite(msg)
     }
 
     // MARK: Actions
@@ -224,10 +225,14 @@ CBPeripheralDelegate, HSBColorPickerDelegate {
     
     // MARK: Private functions
     
-    private func bulbWrite(_ msg : NSString) {
+    private func bulbWrite(_ msg : String) {
+        bulbWrite(Data(msg.utf8))
+    }
+    
+    private func bulbWrite(_ msg : Data) {
+        
         guard let (peripheral, characteristic) = hueBulb else {return}
-        let data = msg.data(using: String.Encoding.utf8.rawValue)
-        peripheral.writeValue(data!, for: characteristic, type: CBCharacteristicWriteType.withoutResponse)
+        peripheral.writeValue(msg, for: characteristic, type: CBCharacteristicWriteType.withoutResponse)
     }
     
     private func startScan() {
