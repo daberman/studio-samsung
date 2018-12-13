@@ -14,7 +14,7 @@ class BTViewController: UIViewController {
     // MARK: Constants
     
     let STATUS_TIMEOUT = 1.0
-    let REFRESH_AVAILABLE = 5.0
+    let REFRESH_AVAILABLE = 1.0
 
     // MARK: Properties
     
