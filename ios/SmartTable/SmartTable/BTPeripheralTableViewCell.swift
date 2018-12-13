@@ -10,7 +10,10 @@ import UIKit
 
 class BTPeripheralTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var peripheralNameLabel: UILabel!
+    // MARK: Properties
+    
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var uuid: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

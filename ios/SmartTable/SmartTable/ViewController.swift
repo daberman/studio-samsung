@@ -41,6 +41,8 @@ CBPeripheralDelegate, HSBColorPickerDelegate {
         btStatusLabel.text = "Please refresh list"
         
         btManager = CBCentralManager(delegate: self, queue: nil, options: [CBCentralManagerOptionShowPowerAlertKey : true])
+        
+        availableBT = BTManager.shared.availablePeripherals
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -71,7 +73,7 @@ CBPeripheralDelegate, HSBColorPickerDelegate {
         // Fetches the appropriate meal for the data source layout.
         let peripheral = availableBT[indexPath.row]
         
-        cell.peripheralNameLabel.text = peripheral.name
+        //cell.peripheralNameLabel.text = peripheral.name
         
         return cell
     }

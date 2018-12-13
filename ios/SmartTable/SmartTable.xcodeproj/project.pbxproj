@@ -15,6 +15,8 @@
 		377BD4F221BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD4F121BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift */; };
 		377BD4F621BF5A9B00CEBC12 /* UUIDKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD4F521BF5A9B00CEBC12 /* UUIDKey.swift */; };
 		377BD4F821C0389F00CEBC12 /* HSBColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD4F721C0389F00CEBC12 /* HSBColorPicker.swift */; };
+		377BD4FC21C18D8A00CEBC12 /* BTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD4FB21C18D8A00CEBC12 /* BTViewController.swift */; };
+		377BD4FE21C18E3500CEBC12 /* BTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD4FD21C18E3500CEBC12 /* BTManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		377BD4F121BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTPeripheralTableViewCell.swift; sourceTree = "<group>"; };
 		377BD4F521BF5A9B00CEBC12 /* UUIDKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UUIDKey.swift; sourceTree = "<group>"; };
 		377BD4F721C0389F00CEBC12 /* HSBColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBColorPicker.swift; sourceTree = "<group>"; };
+		377BD4FB21C18D8A00CEBC12 /* BTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTViewController.swift; sourceTree = "<group>"; };
+		377BD4FD21C18E3500CEBC12 /* BTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 				377BD4F721C0389F00CEBC12 /* HSBColorPicker.swift */,
 				377BD4F121BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift */,
 				377BD4E321BAE3BA00CEBC12 /* Main.storyboard */,
+				377BD4FB21C18D8A00CEBC12 /* BTViewController.swift */,
+				377BD4FD21C18E3500CEBC12 /* BTManager.swift */,
 				377BD4F521BF5A9B00CEBC12 /* UUIDKey.swift */,
 				377BD4E621BAE3BC00CEBC12 /* Assets.xcassets */,
 				377BD4E821BAE3BC00CEBC12 /* LaunchScreen.storyboard */,
@@ -144,8 +150,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				377BD4FE21C18E3500CEBC12 /* BTManager.swift in Sources */,
 				377BD4F621BF5A9B00CEBC12 /* UUIDKey.swift in Sources */,
 				377BD4E221BAE3BA00CEBC12 /* ViewController.swift in Sources */,
+				377BD4FC21C18D8A00CEBC12 /* BTViewController.swift in Sources */,
 				377BD4F221BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift in Sources */,
 				377BD4F821C0389F00CEBC12 /* HSBColorPicker.swift in Sources */,
 				377BD4E021BAE3BA00CEBC12 /* AppDelegate.swift in Sources */,
