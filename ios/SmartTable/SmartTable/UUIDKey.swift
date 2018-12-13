@@ -21,3 +21,6 @@ let BLE_Characteristic_uuid_Rx = CBUUID(string: kBLE_Characteristic_uuid_Rx)// (
 
 let kAdafruitFeather_Hue_UUID = "FBC6F9D3-B50E-01A4-C33B-F2449A145D55"
 let BLE_Hue_UUID = CBUUID(string: kAdafruitFeather_Hue_UUID)
+
+let kAdafruitFeather_Lock_UUID = "CCBF604D-00BE-FA04-2A3C-9D85AD13067E"
+let BLE_Lock_UUID = CBUUID(string: kAdafruitFeather_Lock_UUID)

@@ -14,7 +14,7 @@ class BTManager: NSObject {
     
     let SCAN_TIMEOUT = 1.0
     let SCAN_REPEAT = 4.0
-    let SCAN_MAX_DEVICES = 1
+    let SCAN_MAX_DEVICES = 2
     
     enum BTManagerPeripheral {
         case bulb
@@ -246,6 +246,8 @@ extension BTManager : CBPeripheralDelegate {
                 switch CBUUID(nsuuid: peripheral.identifier) {
                 case BLE_Hue_UUID:
                     hueBulb = (peripheral, characteristic)
+                case BLE_Lock_UUID:
+                    smartLock = (peripheral, characteristic)
                 default:
                     print("\n*******************")
                     print("Missing assignment for a desired peripheral!")
@@ -257,7 +259,7 @@ extension BTManager : CBPeripheralDelegate {
     
     private func isDesiredPeripheral(_ peripheral: CBPeripheral) -> Bool {
         switch CBUUID(nsuuid: peripheral.identifier) {
-        case BLE_Hue_UUID: // List all UUIDs here
+        case BLE_Hue_UUID, BLE_Lock_UUID: // List all UUIDs here
             return true
         default:
             return false

@@ -1,11 +1,11 @@
 /*
-   hue_bluefuit.ino
+   lock_bluefuit.ino
    by Dan Berman
-   created 12/4/18
+   created 12/13/18
    updated 12/13/18
 
-   Arduino code for CT Product Studio - team 75 (Samsung). Controls the mock Philips Hue lightbulb.
-   Requires the Adafruit_NeoPixel library. An optional RGB LED can be connected to the board to use
+   Arduino code for CT Product Studio - team 75 (Samsung). Controls the servo operating the fake smart lock.
+   An optional RGB LED can be connected to the board to use
    as a startup status indicator.
 
    This code is written to be used on an Adafruit nRF52 Bluefruit Feather board
@@ -30,8 +30,7 @@
 */
 
 #include <bluefruit.h>
-#include <Adafruit_NeoPixel.h>
-
+#include <Servo.h> // make sure to delete Documents/Arduino/Servo so correct library is used from Adafruit
 
 /* Constants */
 
@@ -41,37 +40,21 @@
 
 // Constants for the RGB status LED
 #define STATUS_LED_EN     true
-#define STATUS_R_LED_PIN  A5 // 5
-#define STATUS_G_LED_PIN  A4 // 28
-#define STATUS_B_LED_PIN  A3 // 29
+#define STATUS_R_LED_PIN  31
+#define STATUS_G_LED_PIN  30
+#define STATUS_B_LED_PIN  27
 #define LED_ON            LOW
 #define LED_OFF           HIGH
 
-// Constants for the NeoPixels
-#define BULB_PIN    27
-#define BULB_PIXELS 4
+// Constants for the Servo
+#define SERVO_PIN 11
+#define LOCK_OPEN 0
+#define LOCK_SHUT 180
 
 
 /* Global Variables */
-
-// Parameter 1 = number of pixels in strip
-// Parameter 2 = Arduino pin number (most are valid)
-// Parameter 3 = pixel type flags, add together as needed:
-//   NEO_KHZ800  800 KHz bitstream (most NeoPixel products w/WS2812 LEDs)
-//   NEO_KHZ400  400 KHz (classic 'v1' (not v2) FLORA pixels, WS2811 drivers)
-//   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)
-//   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
-//   NEO_RGBW    Pixels are wired for RGBW bitstream (NeoPixel RGBW products)
-Adafruit_NeoPixel bulb = Adafruit_NeoPixel(BULB_PIXELS, BULB_PIN, NEO_GRB + NEO_KHZ800);
-
-bool on;
-bool enRainbow;
-int brightness;
-int red;
-int green;
-int blue;
-
 BLEUart bleuart;
+Servo lockServo;
 
 void setup()
 {
@@ -81,7 +64,7 @@ void setup()
     Serial.begin(115200);
     while ( !Serial ) delay(10);
 
-    Serial.println("Hue Bulb Debug Mode Enabled");
+    Serial.println("Smart Lock Debug Mode Enabled");
     Serial.println("---------------------------");
 
     Serial.println();
@@ -102,22 +85,14 @@ void setup()
     digitalWrite(STATUS_B_LED_PIN, LED_OFF);
   }
 
-  if ( DEBUG > 1 ) delay(1000);
+  if ( DEBUG > 1) delay(1000);
 
-  // Setup NeoPixels for the bulb
-  if ( DEBUG ) Serial.println("Initializing NeoPixels...");
-  if ( STATUS_LED_EN ) digitalWrite(STATUS_R_LED_PIN, LED_ON); // Turn on red
+  // Setup lock servo
+  if ( DEBUG ) Serial.println("Initializing Servo...");
+  if ( STATUS_LED_EN ) digitalWrite(STATUS_R_LED_PIN, LED_ON);
 
-  red = 255;
-  green = 255;
-  blue = 255;
-  brightness = 100;
-  on = false;
-  enRainbow = false;
-
-  bulb.begin();
-  setColor();
-  bulb.show();
+  lockServo.attach(SERVO_PIN);
+  lockServo.write(LOCK_OPEN);
 
   if ( DEBUG > 1) delay(1000);
 
@@ -129,7 +104,7 @@ void setup()
   Bluefruit.begin();
   // Set max power. Accepted values are: -40, -30, -20, -16, -12, -8, -4, 0, 4
   Bluefruit.setTxPower(4);
-  Bluefruit.setName("Hue_Bluefruit");
+  Bluefruit.setName("Lock_Bluefruit");
   Bluefruit.setConnectCallback(connect_callback);
   Bluefruit.setDisconnectCallback(disconnect_callback);
 
@@ -145,8 +120,7 @@ void setup()
 /* Main loop */
 void loop()
 {
-  if (DEBUG && Serial.available()) processCmd(&Serial);
-  if (on && enRainbow) rainbowScroll(10);
+  if (DEBUG && Serial.available()) processCmd(&Serial);\
 }
 
 /* Process a command from a Stream */
@@ -159,54 +133,14 @@ void processCmd(Stream *s)
 
   switch (cmd) {
 
-    case 'b': // Update brightness
-      if (DEBUG > 2) Serial.println("Updating brightness");
-      brightness = s->read();
-
-      setColor();
-
-      s->flush(); // Clear the buffer
-      break;
-
-    case 'c': // Update color
-      if (DEBUG > 2) Serial.println("Updating color");
-      red = s->read();
-      green = s->read();
-      blue = s->read();
-
-      setColor();
-
-      s->flush(); // Clear the buffer
-      break;
-
-    case 'o': // Set On/Off
-      if (DEBUG > 2) Serial.println("On/Off command received");
-      c = s->read();
-      if (c == 'n') {
-        on = true;
-      }
-      else if (c == 'f') {
-        on = false;
-      }
-      setColor();
-
-      s->flush(); // Clear the buffer
-      break;
-
-    case 'r': // Control Rainbow mode
-      if (DEBUG > 2) Serial.println("Rainbow command received");
-      s->read(); // Skip next character
-      c = s->read();
-      if (c == 'n') {
-        enRainbow = true;
-      }
-      else if (c == 'f') {
-        enRainbow = false;
-      }
+    case 'l': // Fall Through
+    case 'u':
+      if (DEBUG > 2) Serial.println("Updating lock");
+      updateServo(cmd);
       
-      s->flush(); // Clear the buffer
+      s->flush();
       break;
-
+      
     case 'P': // Debug print what is being sent over bluetooth to Serial
       if (DEBUG > 2) Serial.print("Received via bluetooth: ");
       if ( DEBUG ) debugBLEUart();
@@ -291,86 +225,13 @@ void debugBLEUart()
   }
 }
 
-/* NeoPixel Functions */
-
-// Fill the dots one after the other with a color
-void setColor()
-{
-  int r = 0;
-  int g = 0;
-  int b = 0;
-
-  if (on)
-  {
-    // Adjust color levels by brightness
-    r = red * brightness / 100;
-    g = green * brightness / 100;
-    b = blue * brightness / 100;
+/* Smart Lock Servo Functions */
+void updateServo(char cmd) {
+  if (cmd == 'l') {
+    lockServo.write(LOCK_SHUT);
+    if ( DEBUG > 1) Serial.println("Locking...");
+  } else if (cmd == 'u') {
+    lockServo.write(LOCK_OPEN);
+    if ( DEBUG > 1) Serial.println("Unlocking...");
   }
-
-  // Push the color out to all pixels
-  for (int i = 0; i < bulb.numPixels(); i++)
-  {
-    bulb.setPixelColor(i, r, g, b);
-  }
-
-  bulb.show();
-}
-
-void rainbowScroll(uint8_t wait) {
-  uint32_t wheelVal;
-  int redVal, greenVal, blueVal;
-
-  while (on && enRainbow)
-  {
-
-    for (int j = 0; j < 256; j++) // 5 cycles of all colors on wheel
-    {
-
-      wheelVal = Wheel(j & 255);
-
-      redVal = redT(wheelVal) * brightness/100;
-      greenVal = greenT(wheelVal) * brightness/100;
-      blueVal = blueT(wheelVal) * brightness/100;
-
-      for (int i = 0; i < bulb.numPixels(); i++)
-      {
-        bulb.setPixelColor( i, bulb.Color( redVal, greenVal, blueVal ) );
-      }
-
-      bulb.show();
-      delay(wait);
-
-      if (!on || ! enRainbow) break;
-    } // End for
-
-  } // End while(rainbow)
-  
-  setColor(); // Call to return bulb to prior/current settings
-  
-} // end rainbowScroll()
-
-// Input a value 0 to 255 to get a color value.
-// The colours are a transition r - g - b - back to r.
-uint32_t Wheel(byte WheelPos) {
-  WheelPos = 255 - WheelPos;
-  if (WheelPos < 85) {
-    return bulb.Color(255 - WheelPos * 3, 0, WheelPos * 3, 0);
-  }
-  if (WheelPos < 170) {
-    WheelPos -= 85;
-    return bulb.Color(0, WheelPos * 3, 255 - WheelPos * 3, 0);
-  }
-  WheelPos -= 170;
-  return bulb.Color(WheelPos * 3, 255 - WheelPos * 3, 0, 0);
-}
-
-uint8_t redT(uint32_t c) {
-  return (c >> 16);
-}
-uint8_t greenT(uint32_t c) {
-  return (c >> 8);
-}
-uint8_t blueT(uint32_t c) {
-  return (c);
 }
