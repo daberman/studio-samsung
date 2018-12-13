@@ -14,6 +14,7 @@ class BTPeripheralTableViewCell: UITableViewCell {
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var uuid: UILabel!
+    @IBOutlet weak var connStatus: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -114,6 +114,17 @@ extension BTViewController : UITableViewDelegate, UITableViewDataSource {
         cell.name.text = peripheral.name
         cell.uuid.text = "UUID:\n" + peripheral.identifier.uuidString
         
+        switch peripheral.state {
+        case .connected:
+            cell.connStatus.text = "Connected"
+        case .connecting:
+            cell.connStatus.text = "Connecting"
+        case .disconnecting:
+            cell.connStatus.text = "Disconnecting"
+        case .disconnected:
+            cell.connStatus.text = "Disconnected"
+        }
+        
         return cell
     }
 }

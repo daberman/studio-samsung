@@ -13,7 +13,7 @@ class BTManager: NSObject {
     // MARK: Configuration Constants
     
     let SCAN_TIMEOUT = 1.0
-    let SCAN_REPEAT = 15.0
+    let SCAN_REPEAT = 4.0
     let SCAN_MAX_DEVICES = 1
     
     enum BTManagerPeripheral {
@@ -28,7 +28,7 @@ class BTManager: NSObject {
     
     // Array of all peripherals that could be connected to
     var availablePeripherals : [CBPeripheral] {
-        get {return availablePeriphs + connectedPeriphs}
+        get {return unconnectedPeriphs + connectedPeriphs}
     }
     
     var managerStatus : CBManagerState? {
@@ -37,7 +37,7 @@ class BTManager: NSObject {
     
     // Private variables accessible only by the class
     private var btManager : CBCentralManager!
-    private var availablePeriphs = [CBPeripheral]()
+    private var unconnectedPeriphs = [CBPeripheral]()
     private var connectedPeriphs = [CBPeripheral]()
     
     
@@ -101,11 +101,10 @@ class BTManager: NSObject {
         guard let btManager = btManager, btManager.state == .poweredOn else {
             print("Scan failed to start")
             return
-            
         }
         
         // Clear list of available peripherals
-        availablePeriphs = []
+        unconnectedPeriphs = []
         
         print("Scanning")
         btManager.scanForPeripherals(withServices: [BLEService_UUID],
@@ -113,7 +112,7 @@ class BTManager: NSObject {
         
         // Set timeout timer
         timeoutTimer = Timer.scheduledTimer(timeInterval: SCAN_TIMEOUT, target: self,
-                                            selector: #selector(self.cancelScan), userInfo: nil, repeats: false)
+                                            selector: #selector(cancelScan), userInfo: nil, repeats: false)
     }
     
     @objc private func cancelScan() {
@@ -123,7 +122,10 @@ class BTManager: NSObject {
         // If we haven't connected to all the peripherals we want to schedule the repeat scan timer
         if connectedPeriphs.count < SCAN_MAX_DEVICES {
             repeatTimer = Timer.scheduledTimer(timeInterval: SCAN_REPEAT, target: self,
-                                               selector: #selector(self.startScan), userInfo: nil, repeats: false)
+                                               selector: #selector(startScan), userInfo: nil, repeats: false)
+        } else { // Schedule a timer to keep calling this in case the count changes (but the disconnect/restart is missed)
+            repeatTimer = Timer.scheduledTimer(timeInterval: SCAN_REPEAT, target: self,
+                                               selector: #selector(cancelScan), userInfo: nil, repeats: false)
         }
         
         print("Scan stopped")
@@ -150,9 +152,9 @@ extension BTManager : CBCentralManagerDelegate {
         }
         
         // Check if peripheral already exists in the list of discovered peripherals
-        if !availablePeriphs.contains(peripheral) {
+        if !unconnectedPeriphs.contains(peripheral) {
             print("Adding to available list")
-            availablePeriphs.append(peripheral)
+            unconnectedPeriphs.append(peripheral)
         }
         
         // Check if peripheral is already connected to
@@ -168,8 +170,8 @@ extension BTManager : CBCentralManagerDelegate {
         
         if isDesiredPeripheral(peripheral) {
             connectedPeriphs.append(peripheral)
-            if let idx = availablePeriphs.firstIndex(of: peripheral) {
-                availablePeriphs.remove(at: idx)
+            if let idx = unconnectedPeriphs.firstIndex(of: peripheral) {
+                unconnectedPeriphs.remove(at: idx)
             }
             peripheral.delegate = self
             peripheral.discoverServices([BLEService_UUID])
@@ -192,6 +194,8 @@ extension BTManager : CBCentralManagerDelegate {
         
         if let idx = connectedPeriphs.firstIndex(of: peripheral) {
             connectedPeriphs.remove(at: idx)
+            // Stop current scan/cancelScan cycle and start a scan to see if we can pick it back up
+            // (or a different peripheral)
             stop()
             startScan()
         }
