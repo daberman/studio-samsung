@@ -17,6 +17,7 @@
 		377BD4FC21C18D8A00CEBC12 /* BTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD4FB21C18D8A00CEBC12 /* BTViewController.swift */; };
 		377BD4FE21C18E3500CEBC12 /* BTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD4FD21C18E3500CEBC12 /* BTManager.swift */; };
 		377BD50021C2407B00CEBC12 /* HueBulbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD4FF21C2407B00CEBC12 /* HueBulbViewController.swift */; };
+		377BD50221C2F24000CEBC12 /* SmartLockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD50121C2F24000CEBC12 /* SmartLockViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		377BD4FB21C18D8A00CEBC12 /* BTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTViewController.swift; sourceTree = "<group>"; };
 		377BD4FD21C18E3500CEBC12 /* BTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTManager.swift; sourceTree = "<group>"; };
 		377BD4FF21C2407B00CEBC12 /* HueBulbViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HueBulbViewController.swift; sourceTree = "<group>"; };
+		377BD50121C2F24000CEBC12 /* SmartLockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLockViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				377BD4F721C0389F00CEBC12 /* HSBColorPicker.swift */,
 				377BD4F121BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift */,
 				377BD4E321BAE3BA00CEBC12 /* Main.storyboard */,
+				377BD50121C2F24000CEBC12 /* SmartLockViewController.swift */,
 				377BD4FF21C2407B00CEBC12 /* HueBulbViewController.swift */,
 				377BD4FB21C18D8A00CEBC12 /* BTViewController.swift */,
 				377BD4FD21C18E3500CEBC12 /* BTManager.swift */,
@@ -157,6 +160,7 @@
 				377BD4F221BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift in Sources */,
 				377BD4F821C0389F00CEBC12 /* HSBColorPicker.swift in Sources */,
 				377BD4E021BAE3BA00CEBC12 /* AppDelegate.swift in Sources */,
+				377BD50221C2F24000CEBC12 /* SmartLockViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

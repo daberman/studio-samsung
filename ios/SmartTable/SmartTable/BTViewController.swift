@@ -125,7 +125,8 @@ extension BTViewController : UITableViewDelegate, UITableViewDataSource {
         switch CBUUID(nsuuid: peripheral.identifier) {
         case BLE_Hue_UUID:
             performSegue(withIdentifier: "HueBulbSegue", sender: self)
-            print("Successful Segue")
+        case BLE_Lock_UUID:
+            performSegue(withIdentifier: "SmartLockSegue", sender: self)
         default:
             break
         }
