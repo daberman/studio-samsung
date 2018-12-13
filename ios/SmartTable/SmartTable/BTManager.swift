@@ -111,6 +111,8 @@ class BTManager: NSObject {
                                      options: [CBCentralManagerScanOptionAllowDuplicatesKey : false])
         
         // Set timeout timer
+        timeoutTimer?.invalidate()
+        repeatTimer?.invalidate()
         timeoutTimer = Timer.scheduledTimer(timeInterval: SCAN_TIMEOUT, target: self,
                                             selector: #selector(cancelScan), userInfo: nil, repeats: false)
     }
@@ -120,6 +122,8 @@ class BTManager: NSObject {
         btManager?.stopScan()
         
         // If we haven't connected to all the peripherals we want to schedule the repeat scan timer
+        timeoutTimer?.invalidate()
+        repeatTimer?.invalidate()
         if connectedPeriphs.count < SCAN_MAX_DEVICES {
             repeatTimer = Timer.scheduledTimer(timeInterval: SCAN_REPEAT, target: self,
                                                selector: #selector(startScan), userInfo: nil, repeats: false)
