@@ -49,7 +49,7 @@
 // Constants for the Servo
 #define SERVO_PIN 11
 #define LOCK_OPEN 0
-#define LOCK_SHUT 180
+#define LOCK_SHUT 170
 
 
 /* Global Variables */
