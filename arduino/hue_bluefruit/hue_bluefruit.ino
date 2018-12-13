@@ -161,7 +161,7 @@ void processCmd(Stream *s)
 
     case 'b': // Update brightness
       if (DEBUG > 2) Serial.println("Updating brightness");
-      brightness = s->parseInt();
+      brightness = s->read();
 
       setColor();
 
@@ -193,11 +193,18 @@ void processCmd(Stream *s)
       s->flush(); // Clear the buffer
       break;
 
-    case 'r': // Turn on Rainbow mode (send 'r' to turn off)
+    case 'r': // Control Rainbow mode
       if (DEBUG > 2) Serial.println("Rainbow command received");
+      s->read(); // Skip next character
+      c = s->read();
+      if (c == 'n') {
+        enRainbow = true;
+      }
+      else if (c == 'f') {
+        enRainbow = false;
+      }
+      
       s->flush(); // Clear the buffer
-
-      enRainbow = !enRainbow;
       break;
 
     case 'P': // Debug print what is being sent over bluetooth to Serial
@@ -334,9 +341,13 @@ void rainbowScroll(uint8_t wait) {
       bulb.show();
       delay(wait);
 
+      if (!on || ! enRainbow) break;
     } // End for
 
   } // End while(rainbow)
+  
+  setColor(); // Call to return bulb to prior/current settings
+  
 } // end rainbowScroll()
 
 // Input a value 0 to 255 to get a color value.
