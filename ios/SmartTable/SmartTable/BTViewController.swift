@@ -23,34 +23,15 @@ class BTViewController: UIViewController {
     @IBOutlet weak var scanButton: UIButton!
     
     var availablePeripherals = [CBPeripheral]()
-    var statusTimer : Timer?
-    var refreshTimer : Timer?
     
     // MARK: ViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateStatusLabel()
-        
         deviceTable.delegate = self
         deviceTable.dataSource = self
         
-        refreshAvailable()
-        
-        startTimers()
-    }
-    
-    func stopTimers() {
-        refreshTimer?.invalidate()
-        statusTimer?.invalidate()
-    }
-    
-    func startTimers() {
-        // Schedule a timer to regularly update the status label
-        statusTimer = Timer.scheduledTimer(timeInterval: STATUS_TIMEOUT, target: self, selector: #selector(updateStatusLabel), userInfo: nil, repeats: true)
-        
-        // Schedule a timer to regularly refresh the table
-        refreshTimer = Timer.scheduledTimer(timeInterval: REFRESH_AVAILABLE, target: self, selector: #selector(refreshAvailable), userInfo: nil, repeats: true)
+        BTManager.shared.delegate = self
     }
     
     // MARK: Actions
@@ -58,26 +39,22 @@ class BTViewController: UIViewController {
     @IBAction func scanButtonPressed(_ sender: Any) {
         BTManager.shared.stop()
         BTManager.shared.resume()
-        
-        Timer.scheduledTimer(timeInterval: REFRESH_AVAILABLE, target: self, selector: #selector(refreshAvailable),
-                             userInfo: nil, repeats: false)
     }
     
     // MARK: Private Functions
-    
-    @objc private func updateStatusLabel () {
-        if let status = BTManager.shared.managerStatus {
-            statusLabel.text = "Current Bluetooth Status: \(status.rawValue)"
-        } else {
-            statusLabel.text = "Unable to obtain bluetooth status"
-        }
-    }
-    
-    @objc private func refreshAvailable() {
-        availablePeripherals = BTManager.shared.availablePeripherals
+}
+
+// MARK: BTManagerDelegate
+extension BTViewController : BTManagerDelegate {
+    func btManager(didUpdatePeripherals peripherals: [CBPeripheral]) {
+        
+        availablePeripherals = peripherals
         deviceTable.reloadData()
     }
-
+    
+    func btManager(didUpdateState state: CBManagerState) {
+        statusLabel.text = "Current Bluetooth Status: \(state.rawValue)"
+    }   
 }
 
 // MARK: TableView

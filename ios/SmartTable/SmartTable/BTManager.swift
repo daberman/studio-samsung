@@ -8,6 +8,11 @@
 
 import CoreBluetooth
 
+protocol BTManagerDelegate : AnyObject {
+    func btManager(didUpdatePeripherals peripherals: [CBPeripheral])
+    func btManager(didUpdateState state: CBManagerState)
+}
+
 class BTManager: NSObject {
     
     // MARK: Configuration Constants
@@ -26,12 +31,15 @@ class BTManager: NSObject {
     // Create a static instance so it is accessible by all
     static let shared = BTManager()
     
+    // Protocol Delegate
+    weak var delegate : BTManagerDelegate?
+    
     // Array of all peripherals that could be connected to
     var availablePeripherals : [CBPeripheral] {
         get {return unconnectedPeriphs + connectedPeriphs}
     }
     
-    var managerStatus : CBManagerState? {
+    var managerStatus : CBManagerState {
         get {return btManager.state}
     }
     
@@ -132,6 +140,8 @@ class BTManager: NSObject {
                                                selector: #selector(cancelScan), userInfo: nil, repeats: false)
         }
         
+        delegate?.btManager(didUpdatePeripherals: availablePeripherals)
+        
         print("Scan stopped")
     }
 }
@@ -145,6 +155,8 @@ extension BTManager : CBCentralManagerDelegate {
         if central.state == .poweredOn {
             startScan()
         }
+        
+        delegate?.btManager(didUpdateState: central.state)
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral,
