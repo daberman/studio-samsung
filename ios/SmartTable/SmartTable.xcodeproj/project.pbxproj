@@ -70,22 +70,38 @@
 		377BD4DE21BAE3BA00CEBC12 /* SmartTable */ = {
 			isa = PBXGroup;
 			children = (
+				377BD50821C42A3C00CEBC12 /* Control Screens */,
+				377BD50721C42A1500CEBC12 /* Bluetooth */,
 				377BD4DF21BAE3BA00CEBC12 /* AppDelegate.swift */,
-				377BD4F721C0389F00CEBC12 /* HSBColorPicker.swift */,
-				377BD4F121BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift */,
 				377BD4E321BAE3BA00CEBC12 /* Main.storyboard */,
 				377BD50321C37F1600CEBC12 /* MainScreenCollectionViewController.swift */,
 				377BD50521C37F2300CEBC12 /* MainScreenCollectionViewCell.swift */,
-				377BD50121C2F24000CEBC12 /* SmartLockViewController.swift */,
-				377BD4FF21C2407B00CEBC12 /* HueBulbViewController.swift */,
-				377BD4FB21C18D8A00CEBC12 /* BTViewController.swift */,
-				377BD4FD21C18E3500CEBC12 /* BTManager.swift */,
-				377BD4F521BF5A9B00CEBC12 /* UUIDKey.swift */,
 				377BD4E621BAE3BC00CEBC12 /* Assets.xcassets */,
 				377BD4E821BAE3BC00CEBC12 /* LaunchScreen.storyboard */,
 				377BD4EB21BAE3BC00CEBC12 /* Info.plist */,
 			);
 			path = SmartTable;
+			sourceTree = "<group>";
+		};
+		377BD50721C42A1500CEBC12 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				377BD4F121BB1F1B00CEBC12 /* BTPeripheralTableViewCell.swift */,
+				377BD4FB21C18D8A00CEBC12 /* BTViewController.swift */,
+				377BD4FD21C18E3500CEBC12 /* BTManager.swift */,
+				377BD4F521BF5A9B00CEBC12 /* UUIDKey.swift */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		377BD50821C42A3C00CEBC12 /* Control Screens */ = {
+			isa = PBXGroup;
+			children = (
+				377BD50121C2F24000CEBC12 /* SmartLockViewController.swift */,
+				377BD4FF21C2407B00CEBC12 /* HueBulbViewController.swift */,
+				377BD4F721C0389F00CEBC12 /* HSBColorPicker.swift */,
+			);
+			path = "Control Screens";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
