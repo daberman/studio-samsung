@@ -54,16 +54,19 @@ class MainScreenCollectionViewController: UICollectionViewController {
         
         if indexPath.row == connectedPeripherals.count {
             // Configure cell for alexa
-            cell.name?.text = "Amazon Echo Dot"
-            cell.image?.image = UIImage(named: "EchoIcon")
+            cell.name.text = "Amazon Echo Dot"
+            cell.name.textAlignment = .center
+            cell.image.image = UIImage(named: "EchoIcon")
         } else {
             let peripheral = connectedPeripherals[indexPath.row]
             switch CBUUID(nsuuid: peripheral.identifier) {
             case BLE_Hue_UUID:
                 cell.name.text = "Philips Hue Bulb"
+                cell.name.textAlignment = .center
                 cell.image.image = UIImage(named: "BulbIcon")
             case BLE_Lock_UUID:
-                cell.name.text = "Smart Lock"
+                cell.name.text = "      Smart Lock"
+                cell.name.textAlignment = .left
                 cell.image.image = UIImage(named: "LockIcon")
             default:
                 fatalError("Attempted to load unknown peripheral")
