@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bhh-4X-R3W">
-    <device id="ipad12_9" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,28 +15,28 @@
             <objects>
                 <viewController title="Bluetooth Status" id="d3u-yK-Wm2" customClass="BTViewController" customModule="SmartTable" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tNQ-Fz-UMG">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="u9g-RG-q0D">
-                                <rect key="frame" x="20" y="78" width="984" height="1280"/>
+                                <rect key="frame" x="20" y="96" width="374" height="758"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hJy-zy-fhx">
-                                        <rect key="frame" x="0.0" y="0.0" width="984" height="1259.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="737.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BTPeripheralTableViewCell" rowHeight="95" id="JHS-hp-fgn" customClass="BTPeripheralTableViewCell" customModule="SmartTable" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="984" height="95"/>
+                                                <rect key="frame" x="0.0" y="28" width="374" height="95"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JHS-hp-fgn" id="tBj-UP-CHi">
-                                                    <rect key="frame" x="0.0" y="0.0" width="984" height="94.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="94.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="dAi-ZZ-rMy">
-                                                            <rect key="frame" x="15" y="15" width="954" height="64.5"/>
+                                                            <rect key="frame" x="20" y="11" width="334" height="72.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcd-35-74B">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="954" height="20"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="20" id="UE4-SY-UWx"/>
                                                                     </constraints>
@@ -45,13 +45,13 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UUID Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qe1-9K-Aak">
-                                                                    <rect key="frame" x="0.0" y="26" width="954" height="15.5"/>
+                                                                    <rect key="frame" x="0.0" y="26" width="334" height="23.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connection Status Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbT-4Y-7Ow">
-                                                                    <rect key="frame" x="0.0" y="47.5" width="954" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="55.5" width="334" height="17"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="17" id="slP-63-NcF"/>
                                                                     </constraints>
@@ -78,7 +78,7 @@
                                         </prototypes>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Status Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx0-sh-8Ds">
-                                        <rect key="frame" x="0.0" y="1259.5" width="984" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="737.5" width="374" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -117,14 +117,14 @@
             <objects>
                 <viewController storyboardIdentifier="HueBulbController" title="Hue Bulb Control" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uTg-dE-321" customClass="HueBulbViewController" customModule="SmartTable" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zgC-Bb-Gjq">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QKs-SP-ppg">
-                                <rect key="frame" x="20" y="70" width="984" height="1140"/>
+                                <rect key="frame" x="20" y="88" width="374" height="530"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKu-3X-Rge" customClass="HSBColorPicker" customModule="SmartTable" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="984" height="984"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="sKu-3X-Rge" secondAttribute="height" multiplier="1:1" id="r0Q-1p-TMA"/>
@@ -136,22 +136,22 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="t2P-i3-oKM">
-                                        <rect key="frame" x="0.0" y="992" width="984" height="31"/>
+                                        <rect key="frame" x="0.0" y="382" width="374" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1w-6F-BAM">
-                                                <rect key="frame" x="0.0" y="0.0" width="322.5" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="119.33333333333333" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Green:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q33-au-N1N">
-                                                <rect key="frame" x="330.5" y="0.0" width="323" height="31"/>
+                                                <rect key="frame" x="127.33333333333334" y="0.0" width="119.33333333333334" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9S-Sv-kFX">
-                                                <rect key="frame" x="661.5" y="0.0" width="322.5" height="31"/>
+                                                <rect key="frame" x="254.66666666666674" y="0.0" width="119.33333333333334" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -164,7 +164,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Ae0-2t-Dr7">
-                                        <rect key="frame" x="0.0" y="1031" width="984" height="31"/>
+                                        <rect key="frame" x="0.0" y="421" width="374" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08a-RR-3gO">
                                                 <rect key="frame" x="0.0" y="0.0" width="91" height="31"/>
@@ -173,13 +173,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="MCC-EW-4jp">
-                                                <rect key="frame" x="95" y="0.0" width="852" height="32"/>
+                                                <rect key="frame" x="95" y="0.0" width="242" height="32"/>
                                                 <connections>
                                                     <action selector="brightnessChanged:" destination="uTg-dE-321" eventType="valueChanged" id="YvZ-ZV-P3C"/>
                                                 </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XTt-MJ-bxS">
-                                                <rect key="frame" x="951" y="0.0" width="33" height="31"/>
+                                                <rect key="frame" x="341" y="0.0" width="33" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="33" id="X6B-oX-VNR"/>
                                                 </constraints>
@@ -190,10 +190,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ltl-M4-ZtT">
-                                        <rect key="frame" x="0.0" y="1070" width="984" height="31"/>
+                                        <rect key="frame" x="0.0" y="460" width="374" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On/Off" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmo-DD-TBu">
-                                                <rect key="frame" x="0.0" y="0.0" width="459.5" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="154.66666666666666" height="31"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                                 </accessibility>
@@ -202,13 +202,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pef-b9-4Dl" userLabel="On/Off Switch">
-                                                <rect key="frame" x="467.5" y="0.0" width="51" height="31"/>
+                                                <rect key="frame" x="162.66666666666663" y="0.0" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="onOffChanged:" destination="uTg-dE-321" eventType="valueChanged" id="CJw-UK-cB9"/>
                                                 </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raE-Gt-SYY" userLabel="Null Spacing Label">
-                                                <rect key="frame" x="524.5" y="0.0" width="459.5" height="31"/>
+                                                <rect key="frame" x="219.66666666666663" y="0.0" width="154.33333333333337" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -219,10 +219,10 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hLr-l6-XIC">
-                                        <rect key="frame" x="0.0" y="1109" width="984" height="31"/>
+                                        <rect key="frame" x="0.0" y="499" width="374" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rainbow Mode" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJe-Ij-d8D">
-                                                <rect key="frame" x="0.0" y="0.0" width="459.5" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="154.66666666666666" height="31"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                                 </accessibility>
@@ -231,13 +231,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JJi-W9-K6C" userLabel="Rainbow Switch">
-                                                <rect key="frame" x="467.5" y="0.0" width="51" height="31"/>
+                                                <rect key="frame" x="162.66666666666663" y="0.0" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="rainbowChanged:" destination="uTg-dE-321" eventType="valueChanged" id="CgC-Xg-bUn"/>
                                                 </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NE1-0d-Egg" userLabel="Null Spacing Label">
-                                                <rect key="frame" x="524.5" y="0.0" width="459.5" height="31"/>
+                                                <rect key="frame" x="219.66666666666663" y="0.0" width="154.33333333333337" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -278,14 +278,111 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q7c-cW-gPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3241" y="-280"/>
+            <point key="canvasLocation" x="3241" y="58"/>
+        </scene>
+        <!--Alexa Commands-->
+        <scene sceneID="fCt-8x-LoW">
+            <objects>
+                <viewController id="Qwe-27-hkO" customClass="AlexaViewController" customModule="SmartTable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mHg-MI-qGI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="F3U-K8-btX">
+                                <rect key="frame" x="0.0" y="96" width="414" height="306.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Philips Hue Commands" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xOp-nZ-C5g">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="31.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TDW-mA-ygn">
+                                        <rect key="frame" x="0.0" y="35.5" width="414" height="30"/>
+                                        <state key="normal" title="&quot;Alexa, Turn Off the Lights&quot;"/>
+                                        <connections>
+                                            <action selector="lightsOffPressed:" destination="Qwe-27-hkO" eventType="touchUpInside" id="2rq-B9-G92"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6D-b7-J4B">
+                                        <rect key="frame" x="0.0" y="69.5" width="414" height="30"/>
+                                        <state key="normal" title="&quot;Alexa, Let's Get This Party Started!&quot;"/>
+                                        <connections>
+                                            <action selector="partyPressed:" destination="Qwe-27-hkO" eventType="touchUpInside" id="eiV-Vo-sOY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bxe-tK-ccj">
+                                        <rect key="frame" x="0.0" y="103.5" width="414" height="30"/>
+                                        <state key="normal" title="&quot;Alexa, Good Morning&quot;"/>
+                                        <connections>
+                                            <action selector="morningPressed:" destination="Qwe-27-hkO" eventType="touchUpInside" id="GbP-Yv-nMC"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smart Lock Commands" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0W-rp-IbL">
+                                        <rect key="frame" x="0.0" y="137.5" width="414" height="31.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gdk-TU-rMi">
+                                        <rect key="frame" x="0.0" y="173" width="414" height="30"/>
+                                        <state key="normal" title="&quot;Alexa, Lock the Front Door&quot;"/>
+                                        <connections>
+                                            <action selector="lockPressed:" destination="Qwe-27-hkO" eventType="touchUpInside" id="n0e-Uq-nam"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmE-v5-Nay">
+                                        <rect key="frame" x="0.0" y="207" width="414" height="30"/>
+                                        <state key="normal" title="&quot;Alexa, Unlock the Front Door&quot;"/>
+                                        <connections>
+                                            <action selector="unlockPressed:" destination="Qwe-27-hkO" eventType="touchUpInside" id="rqE-nG-kZi"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Multi-Device Commands" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dfr-Pp-b26">
+                                        <rect key="frame" x="0.0" y="241" width="414" height="31.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oL0-05-cGn">
+                                        <rect key="frame" x="0.0" y="276.5" width="414" height="30"/>
+                                        <state key="normal" title="&quot;Alexa, Goodnight&quot;"/>
+                                        <connections>
+                                            <action selector="nightPressed:" destination="Qwe-27-hkO" eventType="touchUpInside" id="aFd-sU-zCm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="F3U-K8-btX" firstAttribute="leading" secondItem="be0-Bu-EOF" secondAttribute="leading" id="A0B-XZ-Vo7"/>
+                            <constraint firstItem="be0-Bu-EOF" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="F3U-K8-btX" secondAttribute="bottom" constant="8" id="Rhz-Pq-ngt"/>
+                            <constraint firstItem="F3U-K8-btX" firstAttribute="top" secondItem="be0-Bu-EOF" secondAttribute="top" constant="8" id="agb-Mi-BLL"/>
+                            <constraint firstItem="F3U-K8-btX" firstAttribute="centerX" secondItem="mHg-MI-qGI" secondAttribute="centerX" id="xme-d0-Nl5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="be0-Bu-EOF"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Alexa Commands" id="WPx-LC-MEg"/>
+                    <connections>
+                        <outlet property="lightsOffButton" destination="TDW-mA-ygn" id="PIH-ls-inO"/>
+                        <outlet property="lockButton" destination="Gdk-TU-rMi" id="oTO-Sl-doU"/>
+                        <outlet property="morningButton" destination="Bxe-tK-ccj" id="yj5-tj-cwi"/>
+                        <outlet property="nightButton" destination="oL0-05-cGn" id="bkz-Zu-peK"/>
+                        <outlet property="partyButton" destination="W6D-b7-J4B" id="iex-eJ-fVp"/>
+                        <outlet property="unlockButton" destination="bmE-v5-Nay" id="AQ9-sJ-GLB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vGP-gO-7Ii" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3241" y="-1408"/>
         </scene>
         <!--Available Devices-->
         <scene sceneID="aah-hJ-4S1">
             <objects>
                 <collectionViewController id="ee8-fC-7PY" customClass="MainScreenCollectionViewController" customModule="SmartTable" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="NMm-yz-j19">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="254-h0-sUz">
@@ -296,7 +393,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainScreenCell" id="S1C-Le-w8G" customClass="MainScreenCollectionViewCell" customModule="SmartTable" customModuleProvider="target">
-                                <rect key="frame" x="10" y="10" width="200" height="200"/>
+                                <rect key="frame" x="107" y="10" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -343,6 +440,7 @@
                     <connections>
                         <segue destination="KMW-9o-SgX" kind="show" identifier="LockSegue" id="XVB-R6-qXc"/>
                         <segue destination="uTg-dE-321" kind="show" identifier="BulbSegue" id="EvQ-Xy-Ab0"/>
+                        <segue destination="Qwe-27-hkO" kind="show" identifier="AlexaSegue" id="EQv-iL-SEr"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eoP-hQ-cns" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -354,17 +452,17 @@
             <objects>
                 <viewController title="Smart Lock Control" id="KMW-9o-SgX" customClass="SmartLockViewController" customModule="SmartTable" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b9f-Rq-0aA">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="faq-G7-W0d">
-                                <rect key="frame" x="20" y="70" width="984" height="31"/>
+                                <rect key="frame" x="20" y="88" width="374" height="31"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="adO-Yu-rK9">
-                                        <rect key="frame" x="0.0" y="0.0" width="984" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock/Lock" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ubv-6A-YrV" userLabel="Lock">
-                                                <rect key="frame" x="0.0" y="0.0" width="459.5" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="154.5" height="31"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
                                                 </accessibility>
@@ -373,13 +471,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mXr-Cl-ZyV" userLabel="On/Off Switch">
-                                                <rect key="frame" x="467.5" y="0.0" width="51" height="31"/>
+                                                <rect key="frame" x="162.5" y="0.0" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="lockToggled:" destination="KMW-9o-SgX" eventType="valueChanged" id="biw-9k-Sbv"/>
                                                 </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNj-ws-dCZ" userLabel="Null Spacing Label">
-                                                <rect key="frame" x="524.5" y="0.0" width="459.5" height="31"/>
+                                                <rect key="frame" x="219.5" y="0.0" width="154.5" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -407,7 +505,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YU6-Ir-mkv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3241" y="-967"/>
+            <point key="canvasLocation" x="3241" y="-698"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TIf-oQ-RlQ">
@@ -415,7 +513,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bhh-4X-R3W" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hkp-9X-QVP">
-                        <rect key="frame" x="0.0" y="20" width="1024" height="50"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

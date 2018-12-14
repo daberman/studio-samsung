@@ -82,7 +82,7 @@ class MainScreenCollectionViewController: UICollectionViewController {
         
         if indexPath.row == connectedPeripherals.count {
             // Alexa
-            performSegue(withIdentifier: "LockSegue", sender: self)
+            performSegue(withIdentifier: "AlexaSegue", sender: self)
         } else {
 
             let peripheral = connectedPeripherals[indexPath.row]

@@ -20,6 +20,9 @@
 		377BD50221C2F24000CEBC12 /* SmartLockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD50121C2F24000CEBC12 /* SmartLockViewController.swift */; };
 		377BD50421C37F1600CEBC12 /* MainScreenCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD50321C37F1600CEBC12 /* MainScreenCollectionViewController.swift */; };
 		377BD50621C37F2300CEBC12 /* MainScreenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD50521C37F2300CEBC12 /* MainScreenCollectionViewCell.swift */; };
+		377BD50A21C42ECF00CEBC12 /* AlexaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD50921C42ECF00CEBC12 /* AlexaViewController.swift */; };
+		377BD50C21C4374A00CEBC12 /* HueBulb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD50B21C4374A00CEBC12 /* HueBulb.swift */; };
+		377BD50E21C43A2C00CEBC12 /* SmartLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377BD50D21C43A2C00CEBC12 /* SmartLock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		377BD50121C2F24000CEBC12 /* SmartLockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLockViewController.swift; sourceTree = "<group>"; };
 		377BD50321C37F1600CEBC12 /* MainScreenCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCollectionViewController.swift; sourceTree = "<group>"; };
 		377BD50521C37F2300CEBC12 /* MainScreenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCollectionViewCell.swift; sourceTree = "<group>"; };
+		377BD50921C42ECF00CEBC12 /* AlexaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlexaViewController.swift; sourceTree = "<group>"; };
+		377BD50B21C4374A00CEBC12 /* HueBulb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HueBulb.swift; sourceTree = "<group>"; };
+		377BD50D21C43A2C00CEBC12 /* SmartLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartLock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,9 @@
 				377BD50121C2F24000CEBC12 /* SmartLockViewController.swift */,
 				377BD4FF21C2407B00CEBC12 /* HueBulbViewController.swift */,
 				377BD4F721C0389F00CEBC12 /* HSBColorPicker.swift */,
+				377BD50921C42ECF00CEBC12 /* AlexaViewController.swift */,
+				377BD50D21C43A2C00CEBC12 /* SmartLock.swift */,
+				377BD50B21C4374A00CEBC12 /* HueBulb.swift */,
 			);
 			path = "Control Screens";
 			sourceTree = "<group>";
@@ -175,8 +184,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				377BD50A21C42ECF00CEBC12 /* AlexaViewController.swift in Sources */,
 				377BD4FE21C18E3500CEBC12 /* BTManager.swift in Sources */,
 				377BD50421C37F1600CEBC12 /* MainScreenCollectionViewController.swift in Sources */,
+				377BD50C21C4374A00CEBC12 /* HueBulb.swift in Sources */,
+				377BD50E21C43A2C00CEBC12 /* SmartLock.swift in Sources */,
 				377BD4F621BF5A9B00CEBC12 /* UUIDKey.swift in Sources */,
 				377BD4FC21C18D8A00CEBC12 /* BTViewController.swift in Sources */,
 				377BD50021C2407B00CEBC12 /* HueBulbViewController.swift in Sources */,
