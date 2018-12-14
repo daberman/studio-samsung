@@ -49,10 +49,7 @@ class HueBulbViewController: UIViewController, HSBColorPickerDelegate {
         
         updateColorLabels(Int(uintColors[0]), Int(uintColors[1]), Int(uintColors[2]))
         
-        var msg = Data("c".utf8)
-        msg.append(uintColors, count: 3)
-        
-        let _ = BTManager.shared.write(msg, to: .bulb)
+        HueBulb.color(uintColors[0], uintColors[1], uintColors[2])
     }
     
     // MARK: Actions
@@ -61,26 +58,19 @@ class HueBulbViewController: UIViewController, HSBColorPickerDelegate {
         
         updateBrightness()
         
-        var msg = Data("b".utf8)
-        msg.append(UInt8(brightnessSlider.value))
-        
-        let _ = BTManager.shared.write(msg, to: .bulb)
+        HueBulb.brightness(brightness: UInt8(brightnessSlider.value))
     }
     
     @IBAction func onOffChanged(_ sender: Any) {
         if onOffSwitch.isOn {
-            let _ = BTManager.shared.write("on", to: .bulb)
+            HueBulb.on()
         } else {
-            let _ = BTManager.shared.write("off", to: .bulb)
+            HueBulb.off()
         }
     }
     
     @IBAction func rainbowChanged(_ sender: Any) {
-        if rainbowSwitch.isOn {
-            let _ = BTManager.shared.write("ron", to: .bulb)
-        } else {
-            let _ = BTManager.shared.write("roff", to: .bulb)
-        }
+        HueBulb.rainbowMode(is: rainbowSwitch.isOn)
     }
     
     // MARK: Private Functions

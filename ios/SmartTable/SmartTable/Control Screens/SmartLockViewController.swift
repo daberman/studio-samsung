@@ -28,9 +28,9 @@ class SmartLockViewController: UIViewController {
     
     @IBAction func lockToggled(_ sender: Any) {
         if lockSwitch.isOn {
-            let _ = BTManager.shared.write("l", to: .lock)
+            SmartLock.lock()
         } else {
-            let _ = BTManager.shared.write("u", to: .lock)
+            SmartLock.unlock()
         }
     }
     
