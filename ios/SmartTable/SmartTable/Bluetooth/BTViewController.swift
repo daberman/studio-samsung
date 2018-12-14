@@ -20,7 +20,7 @@ class BTViewController: UIViewController {
     
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var deviceTable: UITableView!
-    @IBOutlet weak var scanButton: UIButton!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     
     var availablePeripherals = [CBPeripheral]()
     
@@ -36,7 +36,7 @@ class BTViewController: UIViewController {
     
     // MARK: Actions
     
-    @IBAction func scanButtonPressed(_ sender: Any) {
+    @IBAction func refreshButtonPressed(_ sender: Any) {
         BTManager.shared.stop()
         BTManager.shared.resume()
     }
