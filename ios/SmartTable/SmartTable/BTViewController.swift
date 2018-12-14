@@ -95,17 +95,17 @@ extension BTViewController : UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let peripheral = availablePeripherals[indexPath.row]
-        
-        switch CBUUID(nsuuid: peripheral.identifier) {
-        case BLE_Hue_UUID:
-            performSegue(withIdentifier: "HueBulbSegue", sender: self)
-        case BLE_Lock_UUID:
-            performSegue(withIdentifier: "SmartLockSegue", sender: self)
-        default:
-            break
-        }
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        let peripheral = availablePeripherals[indexPath.row]
+//
+//        switch CBUUID(nsuuid: peripheral.identifier) {
+//        case BLE_Hue_UUID:
+//            performSegue(withIdentifier: "HueBulbSegue", sender: self)
+//        case BLE_Lock_UUID:
+//            performSegue(withIdentifier: "SmartLockSegue", sender: self)
+//        default:
+//            break
+//        }
+//    }
 }

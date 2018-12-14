@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RUS-h2-cXd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bhh-4X-R3W">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -107,13 +107,11 @@
                         <outlet property="deviceTable" destination="hJy-zy-fhx" id="Qyn-5M-8S6"/>
                         <outlet property="scanButton" destination="XPA-tT-HHx" id="PZ0-3o-AOZ"/>
                         <outlet property="statusLabel" destination="cx0-sh-8Ds" id="qCg-If-QzD"/>
-                        <segue destination="uTg-dE-321" kind="show" identifier="HueBulbSegue" id="ju4-Kk-pUY"/>
-                        <segue destination="KMW-9o-SgX" kind="show" identifier="SmartLockSegue" id="tJd-mO-FGJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqm-PO-sdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="298" y="132"/>
+            <point key="canvasLocation" x="1959" y="58"/>
         </scene>
         <!--Hue Bulb Control-->
         <scene sceneID="EZf-DD-3ps">
@@ -281,7 +279,76 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q7c-cW-gPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1289" y="452"/>
+            <point key="canvasLocation" x="3241" y="-280"/>
+        </scene>
+        <!--Available Devices-->
+        <scene sceneID="aah-hJ-4S1">
+            <objects>
+                <collectionViewController id="ee8-fC-7PY" customClass="MainScreenCollectionViewController" customModule="SmartTable" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="NMm-yz-j19">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="254-h0-sUz">
+                            <size key="itemSize" width="200" height="200"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainScreenCell" id="S1C-Le-w8G" customClass="MainScreenCollectionViewCell" customModule="SmartTable" customModuleProvider="target">
+                                <rect key="frame" x="87.666666666666671" y="0.0" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8N-4w-ZUu">
+                                            <rect key="frame" x="0.0" y="179" width="200" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="21F-Iv-vPg">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="177"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="z8N-4w-ZUu" secondAttribute="bottom" id="Pln-8I-kcp"/>
+                                    <constraint firstItem="z8N-4w-ZUu" firstAttribute="top" secondItem="21F-Iv-vPg" secondAttribute="bottom" constant="2" id="aTN-lJ-88t"/>
+                                    <constraint firstItem="21F-Iv-vPg" firstAttribute="leading" secondItem="S1C-Le-w8G" secondAttribute="leading" id="f3c-cz-vBq"/>
+                                    <constraint firstAttribute="trailing" secondItem="21F-Iv-vPg" secondAttribute="trailing" id="fyC-gD-JOB"/>
+                                    <constraint firstItem="z8N-4w-ZUu" firstAttribute="leading" secondItem="S1C-Le-w8G" secondAttribute="leading" id="rMB-ZU-v5O"/>
+                                    <constraint firstItem="21F-Iv-vPg" firstAttribute="top" secondItem="S1C-Le-w8G" secondAttribute="top" id="rfh-Pz-Klv"/>
+                                    <constraint firstAttribute="trailing" secondItem="z8N-4w-ZUu" secondAttribute="trailing" id="t2k-c7-QRg"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="image" destination="21F-Iv-vPg" id="mhE-af-nUd"/>
+                                    <outlet property="name" destination="z8N-4w-ZUu" id="TKe-Ng-lvh"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="ee8-fC-7PY" id="lUs-c6-u7c"/>
+                            <outlet property="delegate" destination="ee8-fC-7PY" id="TUA-t7-dKj"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Available Devices" id="2qM-ls-4h0">
+                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="vdZ-yd-2fw">
+                            <connections>
+                                <segue destination="d3u-yK-Wm2" kind="show" id="3ok-tA-gQ5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="KMW-9o-SgX" kind="show" identifier="LockSegue" id="XVB-R6-qXc"/>
+                        <segue destination="uTg-dE-321" kind="show" identifier="BulbSegue" id="EvQ-Xy-Ab0"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eoP-hQ-cns" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1959.2" y="-698.27586206896558"/>
         </scene>
         <!--Smart Lock Control-->
         <scene sceneID="6Q3-bS-PQN">
@@ -341,25 +408,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YU6-Ir-mkv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1288.8" y="-203.20197044334975"/>
+            <point key="canvasLocation" x="3241" y="-967"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="yRa-t8-GLb">
+        <scene sceneID="TIf-oQ-RlQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RUS-h2-cXd" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bhh-4X-R3W" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6xE-JI-XF8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hkp-9X-QVP">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="d3u-yK-Wm2" kind="relationship" relationship="rootViewController" id="5Gq-i9-Iug"/>
+                        <segue destination="ee8-fC-7PY" kind="relationship" relationship="rootViewController" id="dW6-sd-u4S"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pTC-De-nDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c7F-WA-Yja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-679.20000000000005" y="132.26600985221674"/>
+            <point key="canvasLocation" x="1016.8" y="-698.27586206896558"/>
         </scene>
     </scenes>
 </document>
