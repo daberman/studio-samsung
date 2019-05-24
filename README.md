@@ -9,3 +9,4 @@ Included in this repo is the arduino code that runs the microcontroller cube, an
 * [Arduino code](/arduino)
 * [Android code](/android)
 * [iOS code](/ios)
+* [Buildboard](http://buildboard-10044.cornelltech.io/fall-2018/team_pages/pc075-samsung-electronics-america.html) for links to presentations and demos
